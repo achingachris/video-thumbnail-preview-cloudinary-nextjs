@@ -8,7 +8,6 @@ const Home = () => {
   // onMouseOver
   const startPreview = (e) => {
     const vid = e.target
-    console.log(vid)
     vid.muted = true
     vid.play()
   }
