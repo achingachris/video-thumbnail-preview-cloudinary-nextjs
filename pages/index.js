@@ -1,31 +1,24 @@
+import React from 'react'
 import { AdvancedVideo } from '@cloudinary/react'
 import { Cloudinary, CloudinaryVideo } from '@cloudinary/url-gen'
 import { preview } from '@cloudinary/url-gen/actions/videoEdit'
 
 const Home = () => {
-  // Create and configure your Cloudinary instance.
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: 'chris101',
-    },
-  })
-
-  // cloudinary id
-  const cldID = new Cloudinary({ cloudName: 'chris101' })
-
-  // Use the video with public ID
-  const video_1 = cld.video('video_1')
-  const video_2 = cld.video('video_2')
-  const video_3 = cld.video('video_3')
-
   // video preview on hover
   // onMouseOver
-  const startPreview = (video) => {
-    console.log('mouse over')
+  const startPreview = (e) => {
+    const vid = e.target
+    console.log(vid)
+    vid.muted = true
+    vid.play()
   }
+
   //  onMouseOut
-  const stopPreview = (video) => {
-    console.log('mouse left')
+  const stopPreview = (e) => {
+    const vid = e.target
+    vid.muted = false
+    vid.currentTime = 0
+    vid.pause()
   }
 
   // video urls
@@ -39,51 +32,39 @@ const Home = () => {
   return (
     <div className='container'>
       <h1 className='text-center'>Cloudinary Video Show</h1>
-      {/* <div className='row'>
-        <div className='col-lg-4 col-md-4'>
-          <AdvancedVideo
-            cldVid={video_1}
-            controls
-            className='container'
-            onMouseEnter={startPreview}
-            onMouseLeave={stopPreview}
-          />
-        </div>
-        <div className='col-lg-4 col-md-4'>
-          <AdvancedVideo
-            cldVid={video_2}
-            controls
-            className='container'
-            onMouseEnter={startPreview}
-            onMouseLeave={stopPreview}
-          />
-        </div>
-        <div className='col-lg-4 col-md-4'>
-          <AdvancedVideo
-            cldVid={video_3}
-            controls
-            className='container'
-            onMouseEnter={startPreview}
-            onMouseLeave={stopPreview}
-          />
-        </div>
-      </div> */}
-
       <div className='container'>
         <div className='row'>
           <div className='col-lg-4 col-md-4'>
             <div className='container'>
-              <video src={video_a} className='container' controls></video>
+              <video
+                src={video_a}
+                className='container'
+                controls
+                onMouseEnter={startPreview}
+                onMouseLeave={stopPreview}
+              ></video>
             </div>
           </div>
           <div className='col-lg-4 col-md-4'>
             <div className='container'>
-              <video src={video_b} className='container' controls></video>
+              <video
+                src={video_b}
+                className='container'
+                controls
+                onMouseEnter={startPreview}
+                onMouseLeave={stopPreview}
+              ></video>
             </div>
           </div>
           <div className='col-lg-4 col-md-4'>
             <div className='container'>
-              <video src={video_c} className='container' controls></video>
+              <video
+                src={video_c}
+                className='container'
+                controls
+                onMouseEnter={startPreview}
+                onMouseLeave={stopPreview}
+              ></video>
             </div>
           </div>
         </div>
