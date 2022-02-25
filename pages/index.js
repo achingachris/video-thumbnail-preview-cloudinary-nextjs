@@ -18,37 +18,35 @@ const Home = () => {
   const video_2 = cld.video('video_2')
   const video_3 = cld.video('video_3')
 
-  // const video = new CloudinaryVideo('video_1', { cloudName: 'chris101' }).transformation(previewHover())
-  // const video = new CloudinaryVideo('video_1', {
-  //   cloudName: 'chris101',
-  // }).videoEdit(preview().duration('5.0'))
-  const video = new CloudinaryVideo('video_1', {
-    cloudName: 'chris101',
-  }).videoEdit(preview().duration('5.0'))
-
   // video preview on hover
   // onMouseOver
-  const previewHover = () => {
-    // console.log('mouse over')
-    video.transformation(previewHover())
+  const startPreview = (video) => {
+    console.log('mouse over')
   }
   //  onMouseOut
-  const previewOut = (event) => {
+  const stopPreview = (video) => {
     console.log('mouse left')
   }
+
+  // video urls
+  const video_a =
+    'https://res.cloudinary.com/chris101/video/upload/v1645684691/video_1.mp4'
+  const video_b =
+    'https://res.cloudinary.com/chris101/video/upload/v1645684672/video_2.mp4'
+  const video_c =
+    'https://res.cloudinary.com/chris101/video/upload/v1645684663/video_3.mp4'
 
   return (
     <div className='container'>
       <h1 className='text-center'>Cloudinary Video Show</h1>
-
-      <div className='row'>
+      {/* <div className='row'>
         <div className='col-lg-4 col-md-4'>
           <AdvancedVideo
             cldVid={video_1}
             controls
             className='container'
-            // onMouseEnter={previewHover}
-            // onMouseLeave={previewOut}
+            onMouseEnter={startPreview}
+            onMouseLeave={stopPreview}
           />
         </div>
         <div className='col-lg-4 col-md-4'>
@@ -56,8 +54,8 @@ const Home = () => {
             cldVid={video_2}
             controls
             className='container'
-            // onMouseEnter={previewHover}
-            // onMouseLeave={previewOut}
+            onMouseEnter={startPreview}
+            onMouseLeave={stopPreview}
           />
         </div>
         <div className='col-lg-4 col-md-4'>
@@ -65,21 +63,29 @@ const Home = () => {
             cldVid={video_3}
             controls
             className='container'
-            // onMouseEnter={previewHover}
-            // onMouseLeave={previewOut}
+            onMouseEnter={startPreview}
+            onMouseLeave={stopPreview}
           />
         </div>
-      </div>
+      </div> */}
 
-      <div className='row'>
-        <div className='col'>
-          <AdvancedVideo
-            cldVid={video}
-            controls
-            className='container'
-            // onMouseEnter={previewHover}
-            // onMouseLeave={previewOut}
-          />
+      <div className='container'>
+        <div className='row'>
+          <div className='col-lg-4 col-md-4'>
+            <div className='container'>
+              <video src={video_a} className='container' controls></video>
+            </div>
+          </div>
+          <div className='col-lg-4 col-md-4'>
+            <div className='container'>
+              <video src={video_b} className='container' controls></video>
+            </div>
+          </div>
+          <div className='col-lg-4 col-md-4'>
+            <div className='container'>
+              <video src={video_c} className='container' controls></video>
+            </div>
+          </div>
         </div>
       </div>
     </div>
